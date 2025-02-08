@@ -28,9 +28,8 @@ void print_node(TreePtr tree) {
 
 // Insert a node to a tree
 TreePtr insert_node(ElementType element, TreePtr tree) {
-    TreePtr node = create_node(element);
     if (tree == NULL) {
-        tree = node;
+        tree = create_node(element);
     } else if (element < tree->element) {
         tree->left = insert_node(element, tree->left);
     } else if (element > tree->element) {
