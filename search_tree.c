@@ -116,6 +116,23 @@ void postorder(TreePtr root) {
     }
 }
 
+// Find the height of a tree
+int height(TreePtr tree) {
+    int left_height = -1;
+    int right_height = -1;
+    if (tree->left != NULL) {
+        left_height = height(tree->left);
+    }
+    if (tree->right != NULL) {
+        right_height = height(tree->right);
+    }
+    if (left_height > right_height) {
+        return left_height + 1;
+    } else {
+        return right_height + 1;
+    }
+}
+
 int main() {
     // Build the tree
     TreePtr search_tree = insert_node(14, NULL);
@@ -131,6 +148,11 @@ int main() {
     // Searching
     postorder(search_node(22, search_tree));
     putchar('\n');
+
+    // Height
+    printf("%d\n", height(search_tree));
+    printf("%d\n", height(search_tree->left));
+    printf("%d\n", height(search_tree->right));
 
     // Deletion 22
     delete_node(22, search_tree);
