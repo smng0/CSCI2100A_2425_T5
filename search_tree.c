@@ -116,20 +116,18 @@ void postorder(TreePtr root) {
     }
 }
 
-// Find the height of a tree
+// Find the height of a node
 int height(TreePtr tree) {
-    int left_height = -1;
-    int right_height = -1;
-    if (tree->left != NULL) {
-        left_height = height(tree->left);
-    }
-    if (tree->right != NULL) {
-        right_height = height(tree->right);
-    }
-    if (left_height > right_height) {
-        return left_height + 1;
+    if (tree != NULL) {
+        int left_height = height(tree->left);
+        int right_height = height(tree->right);
+        if (left_height > right_height) {
+            return left_height + 1;
+        } else {
+            return right_height + 1;
+        }
     } else {
-        return right_height + 1;
+        return -1; // Empty tree
     }
 }
 
